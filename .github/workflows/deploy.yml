@@ -1,0 +1,30 @@
+name: Deploy Openblog
+
+on:
+  push:
+    branches:
+      - main  # 当你推送到 main 时触发
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Build
+        run: |
+          npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
