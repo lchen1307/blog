@@ -2,6 +2,7 @@ import { defineConfig } from 'astro/config'
 import mdx from '@astrojs/mdx'
 import sitemap from '@astrojs/sitemap'
 import tailwind from '@astrojs/tailwind'
+import staticAdapter from '@astrojs/adapter-static'
 import { remarkReadingTime } from './src/utils/readTime.ts'
 import { siteConfig } from './src/data/site.config'
 
@@ -9,6 +10,10 @@ import { siteConfig } from './src/data/site.config'
 export default defineConfig({
     site: 'https://lchen1307.github.io',
 	base: '/blog/',
+
+	output: 'static',
+    adapter: staticAdapter(),
+	
 	markdown: {
 		remarkPlugins: [remarkReadingTime],
 		drafts: true,
