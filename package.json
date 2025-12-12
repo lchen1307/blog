@@ -34,6 +34,7 @@
 	},
 	"dependencies": {
 		"@astrojs/rss": "4.0.1",
+		"@astrojs/adapter-static": "^3.x"
 		"astro": "4.0.8",
 		"astro-font": "^0.0.72"
 	},
